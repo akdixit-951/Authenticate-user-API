@@ -26,17 +26,15 @@ const initializeDBAndServer = async () => {
 };
 initializeDBAndServer();
 
-// Get Books API
-app.get("/books/", async (request, response) => {
-  const getBooksQuery = `
+// Get Users API
+app.get("/users", async (request, response) => {
+  const getUsersQuery = `
   SELECT
     *
   FROM
-    book
-  ORDER BY
-    book_id;`;
-  const booksArray = await db.all(getBooksQuery);
-  response.send(booksArray);
+    user;`;
+  const usersArray = await db.all(getUsersQuery);
+  response.send(usersArray);
 });
 
 // Register User API
