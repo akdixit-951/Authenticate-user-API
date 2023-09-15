@@ -24,17 +24,20 @@ const initializeDBAndServer = async () => {
     process.exit(1);
   }
 };
+
 initializeDBAndServer();
 
-// Get Users API
-app.get("/users", async (request, response) => {
-  const getUsersQuery = `
+// Get Books API
+app.get("/books", async (request, response) => {
+  const getBooksQuery = `
   SELECT
     *
   FROM
-    user;`;
-  const usersArray = await db.all(getUsersQuery);
-  response.send(usersArray);
+    book
+  ORDER BY 
+    book_id;`;
+  const booksArray = await db.all(getBooksQuery);
+  response.send(booksArray);
 });
 
 // Register User API
